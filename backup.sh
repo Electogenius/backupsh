@@ -5,12 +5,16 @@
 #	sh backup.sh source_dir destination_parent_dir [optional_backup_name]
 
 
-if [ $# = 3 ]; then
+if [ $# -gt 2 ]; then
 	NAME="backup_$3"
 else
 	NAME="backup"
 fi
 
+if [ $# -gt 3 ]; then
+	IGN="--exclude $4"
+fi
+echo $IGN
 C="\033[0;1;36m"
 N="\033[0m"
 
@@ -20,7 +24,7 @@ read -s -n1 key
 
 rm -rf $2/$NAME
 {
-	rsync -avzhP --stats $1 $2/$NAME &&
+	rsync -avzhP --stats $1 $2/$NAME $IGN &&
 	echo "\n\n\tBackup complete. Files saved to $C$2/$NAME$N\n" &&
 	date >> $2/$NAME/backup-date.txt
 } ||
