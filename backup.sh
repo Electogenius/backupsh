@@ -23,8 +23,7 @@ echo "\n\n\tMaking a backup of $C$1$N to $C$2$N under the sub-folder $C$NAME$N
 read -s -n1 key
 
 echo "Deleting previous backup (if present)"
-rm -rf $2/$NAME
-& echo "Done. Moving files"
+rm -rf $2/$NAME & echo "Done. Moving files"
 {
 	rsync -avzhP --stats $1 $2/$NAME $IGN &&
 	echo "\n\n\tBackup complete. Files saved to $C$2/$NAME$N\n" &&
