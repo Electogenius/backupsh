@@ -24,7 +24,7 @@ read -s -n1 key
 
 echo "Deleting previous backup (if present)"
 rm -rf $2/$NAME
-&& echo "Done. Moving files"
+& echo "Done. Moving files"
 {
 	rsync -avzhP --stats $1 $2/$NAME $IGN &&
 	echo "\n\n\tBackup complete. Files saved to $C$2/$NAME$N\n" &&
