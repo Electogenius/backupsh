@@ -14,7 +14,7 @@ fi
 if [ $# -gt 3 ]; then
 	IGN="--exclude $4"
 fi
-echo $IGN
+
 C="\033[0;1;36m"
 N="\033[0m"
 
